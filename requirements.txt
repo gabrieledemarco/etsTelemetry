@@ -1,5 +1,6 @@
-requests
 psycopg2-binary
-stramlit
-streamlit_authenticator
 sqlalchemy
+streamlit
+streamlit_authenticator
+hydralit_components 
+datetime
