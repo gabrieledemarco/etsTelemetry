@@ -1,6 +1,5 @@
 requests
 psycopg2-binary
-pandas
 stramlit
 streamlit_authenticator
 postgress_alchemy
