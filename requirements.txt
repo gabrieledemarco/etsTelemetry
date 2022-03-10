@@ -1,0 +1,7 @@
+requests
+psycopg2
+psycopg2-binary
+pandas
+stramlit
+streamlit_authenticator
+postgress_alchemy
