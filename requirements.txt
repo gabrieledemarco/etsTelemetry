@@ -1,5 +1,5 @@
 requests
-psycopg2
+psycopg2-binary
 stramlit
 streamlit_authenticator
 sqlalchemy
