@@ -4,20 +4,6 @@ from DBService import DbService
 from Users import Users,UsersDao
 
 
-def Sign(dbs: DbService):
-    auth = st.container()
-
-    with auth:
-        Sign_request = auth.expander(label="Iscriviti", expanded=False)
-        with Sign_request:
-            Sign_up(dbs=dbs)
-        Log_request = auth.expander(label="Connetti al tuo account", expanded=False)
-        with Log_request:
-            name, passw = Log_in_form(dbs)
-
-    return name, passw
-
-
 def Sign_up(dbs: DbService):
     New_user_Registration = st.form(key="New_user_Registration", clear_on_submit=True)
 

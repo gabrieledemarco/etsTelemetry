@@ -83,3 +83,5 @@ class navigation:
 
         self.estimatedDistance = request.json()['navigation']['estimatedDistance'],
         self.speedLimit = request.json()['navigation']['speedLimit']
+
+
