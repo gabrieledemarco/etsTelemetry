@@ -31,23 +31,23 @@ if session_state:
         url = UsersDao(Dbs=dbs).get_user_telemetry(User=usr)[0]
         game = Ets2(url=url)
 
-        #place_time = st.empty()
+        # place_time = st.empty()
         place_container_connection = st.empty()
         place_container_job = st.empty()
         place_conteiner_truck = st.empty()
 
         while session_state:
-           # place_time.write(f"⏳ {datetime.now()} seconds have passed")
+            # place_time.write(f"⏳ {datetime.now()} seconds have passed")
             with place_container_connection:
-                if game.game.connected[0]:
-                    st.subheader("Game Connected")
-                else:
+                if not game.game.connected[0]:
                     st.subheader("Game is not connected")
                     st.text("Open Ets2 and connect to ets2-telemetry-server-master")
                     st.text(f"If Ets2 is working and connected then check IP address below:")
                     st.write(f"{game.url}")
                     st.write("You can download  ets2-telemetry-server-master from [Here]("
                              "https://github.com/Funbit/ets2-telemetry-server) ")
+                else:
+                    st.subheader("Game Connected")
 
             with place_container_job:
                 with st.expander(label="Job Info"):
@@ -60,9 +60,9 @@ if session_state:
                     st.text(f"Expected Time of Journey: {game.expected_real_time()}")
                     st.text(f"Expected Time of Arrive : {game.expected_real_arriv()}")
 
-           # with place_conteiner_truck:
-           #     with st.expander(label="Truck info"):
-           #         st.subheader("Truck Info")
+        # with place_conteiner_truck:
+        #     with st.expander(label="Truck info"):
+        #         st.subheader("Truck Info")
 
 
     except:
