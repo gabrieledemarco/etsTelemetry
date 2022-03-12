@@ -18,8 +18,6 @@ def main():
         with st.sidebar:
             Log = Login(dbs)
             username, session_state = Log.LogIn_Authentication()
-       # username = st.sidebar.text_input("User Name")
-       # passw = st.sidebar.text_input("Password", type="password")
 
         if st.sidebar.checkbox("Login"):
             # check correction of password

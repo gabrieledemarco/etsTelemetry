@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 
 class Ets2:
-    def __init__(self, url):
-        #url = 'http://192.168.1.172:25555/api/ets2/telemetry'
+    def __init__(self, url: str = None):
+        # url = 'http://192.168.1.172:25555/api/ets2/telemetry'
         self.url = url
         self.request = requests.get(self.url, allow_redirects=True)
         self.game = Game(request=self.request)
@@ -83,5 +83,3 @@ class navigation:
 
         self.estimatedDistance = request.json()['navigation']['estimatedDistance'],
         self.speedLimit = request.json()['navigation']['speedLimit']
-
-

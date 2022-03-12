@@ -25,19 +25,19 @@ with st.sidebar:
             except:
                 print("")
 
+# place_time = st.empty()
+place_container_connection = st.empty()
+place_container_job = st.empty()
+place_conteiner_truck = st.empty()
+
 if session_state:
     try:
         usr = Users(nickname=username)
         url = UsersDao(Dbs=dbs).get_user_telemetry(User=usr)[0]
         game = Ets2(url=url)
 
-        # place_time = st.empty()
-        place_container_connection = st.empty()
-        place_container_job = st.empty()
-        place_conteiner_truck = st.empty()
-
         while session_state:
-            # place_time.write(f"⏳ {datetime.now()} seconds have passed")
+
             with place_container_connection:
                 if not game.game.connected[0]:
                     st.subheader("Game is not connected")
@@ -56,14 +56,16 @@ if session_state:
                     st.text(f"Source City     : {game.job.sourceCity[0]}")
                     st.text(f"Source Company  : {game.job.sourceCompany[0]}")
                     st.text(f"Destination City: {game.job.destinationCity[0]}")
-                    st.text(f"Expected Income : {game.job.income[0]}")
+                    st.text(f"Expected Income : {game.job.income[0]} €")
                     st.text(f"Expected Time of Journey: {game.expected_real_time()}")
                     st.text(f"Expected Time of Arrive : {game.expected_real_arriv()}")
-
-        # with place_conteiner_truck:
-        #     with st.expander(label="Truck info"):
-        #         st.subheader("Truck Info")
-
-
     except:
-        print("")
+        with place_container_connection:
+            with st.container():
+                st.subheader("Game is not connected")
+                st.text("Please SignUp or Connect to your account")
+                st.text("Open Ets2 and connect to ets2-telemetry-server-master")
+                st.write("You can download  ets2-telemetry-server-master from [Here]("
+                         "https://github.com/Funbit/ets2-telemetry-server) ")
+                st.text(f"If Ets2 is working and connected but page still not updateing than check IP address")
+                st.text("Check on your ets2-telemetry-server-master the localhost IP address")
